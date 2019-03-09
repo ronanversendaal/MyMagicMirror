@@ -28,7 +28,7 @@ I've made a script to install all of your currently used modules:
 - Navigate to **project directory** in the vagrant box and run `install_modules.sh`
 - Configure the module in the config.js as per the documentation in the module repository if you haven't already.
 
-It's important to keep track of your installed modules with the modules.json file located in the project directory. This file is used to install all of your modules.
+It's important to keep track of your installed modules with the `modules.json` file located in the project directory. This file is used to install all of your modules.
 
 # Troubleshooting
 - If you navigate from your local machine to the ip/domain where the mirror is located, you can get the error : 
