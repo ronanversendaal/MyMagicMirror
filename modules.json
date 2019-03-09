@@ -1,0 +1,12 @@
+[
+  {
+    "name": "MMM-pihole-stats",
+    "url": "https://github.com/sheyabernstein/MMM-pihole-stats",
+    "npmInstall": false
+  },
+  {
+    "name": "MMM-Logging",
+    "url": "https://github.com/shbatm/MMM-Logging",
+    "npmInstall": true
+  }
+]
