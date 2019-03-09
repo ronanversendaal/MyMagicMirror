@@ -22,6 +22,14 @@
 - Start the MagicMirror in server only mode: `node serveronly`
 - Navigate to the domain or ip address configured in the Vagrantfile with port 8080 (example: dev.magicmirror.com:8080)
 
+## Installing https 
+If modules you would like to install voice commands or such, you would need to access the mirror via https to allow most browsers to allow these inputs. Most default browsers automatically deny access and settings can't be altered.
+Creating a self-signed certificate will allow https access.
+- Create a directory `https` in `MagicMirror/js/` and navigate to it.
+- Create a self-signed certificate using `openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes`
+- Follow the instructions on the comment here to setup https in `js/server.js` : https://forum.magicmirror.builders/post/42690
+- Access the mirror via https://dev.magicmirror.com:8080
+
 # Installing modules
 I've made a script to install all of your currently used modules:
 
@@ -36,6 +44,6 @@ It's important to keep track of your installed modules with the `modules.json` f
 This device is not allowed to access your mirror. 
 Please check your config.js or config.js.sample to change this.
 ```
-Solution: in the `config.js` set the `address` property to `0.0.0.0` and add your private ip ( from the box ) to the `ipWhitelist` array.
+Solution: in the `config.js` set the `address` property to `0.0.0.0` and add your private ip ( from the box ) to the `ipWhitelist` array. ( Check the node logs for the ip that gets blocked. )
 
 For more information about the MagicMirror project or troubleshooting, please refer to the MagicMirror repository and wiki.

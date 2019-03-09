@@ -8,5 +8,10 @@
     "name": "MMM-Logging",
     "url": "https://github.com/shbatm/MMM-Logging",
     "npmInstall": true
+  },
+  {
+    "name": "MMM-Voice-Commands",
+    "url": "",
+    "npmInstall": true
   }
 ]
