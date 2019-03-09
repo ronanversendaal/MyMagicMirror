@@ -11,7 +11,7 @@
   },
   {
     "name": "MMM-Voice-Commands",
-    "url": "",
+    "url": "https://github.com/Veldrovive/MMM-Voice-Commands.git",
     "npmInstall": true
   }
 ]
