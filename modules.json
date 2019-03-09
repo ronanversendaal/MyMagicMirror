@@ -13,5 +13,15 @@
     "name": "MMM-Voice-Commands",
     "url": "https://github.com/Veldrovive/MMM-Voice-Commands.git",
     "npmInstall": true
+  },
+  {
+    "name": "MMM-Page-Selector",
+    "url": "https://github.com/Veldrovive/MMM-Page-Selector.git",
+    "npmInstall": true
+  },
+  {
+    "name": "MMM-page-indicator",
+    "url": "https://github.com/edward-shen/MMM-page-indicator.git",
+    "npmInstall": false
   }
 ]
