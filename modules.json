@@ -23,5 +23,15 @@
     "name": "MMM-page-indicator",
     "url": "https://github.com/edward-shen/MMM-page-indicator.git",
     "npmInstall": false
+  },
+  {
+    "name": "MMM-Remote-Control",
+    "url": "https://github.com/Jopyth/MMM-Remote-Control.git",
+    "npmInstall": true
+  },
+  {
+    "name": "MMM-EyeCandy",
+    "url": "https://github.com/mykle1/MMM-EyeCandy.git",
+    "npmInstall": false
   }
 ]

@@ -22,6 +22,20 @@
 - Start the MagicMirror in server only mode: `node serveronly`
 - Navigate to the domain or ip address configured in the Vagrantfile with port 8080 (example: dev.magicmirror.com:8080)
 
+## [Starting the MagicMirror](https://github.com/MichMich/MagicMirror/wiki/auto-starting-magicmirror) through pm2
+- Install pm2 `sudo npm i -g pm2`
+- Autostart pm2 `pm2 startup` and run the command that shows in the output 
+- Create a `mm.sh` shell script with instructions to start the MagicMirror
+  - For this vagrant installation it would be : 
+  ```
+  cd /var/project/MagicMirror
+  node serveronly
+  ```
+- Make the shell script executable : `chmod +x mm.sh`
+- Start the mirror with `pm2 start mm`
+- Save the process manager state using `pm2 save`
+- Look [here](https://github.com/MichMich/MagicMirror/wiki/auto-starting-magicmirror#controlling-you-magicmirror-via-pm2) for pm2 controls
+
 ## Installing https 
 If modules you would like to install voice commands or such, you would need to access the mirror via https to allow most browsers to allow these inputs. Most default browsers automatically deny access and settings can't be altered.
 Creating a self-signed certificate will allow https access.
