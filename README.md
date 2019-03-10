@@ -17,7 +17,7 @@
 - Navigate to the project directory in the vagrant box (Probably /var/project) and clone the MagicMirror project : `git clone https://github.com/MichMich/MagicMirror`
 - Enter the cloned folder and install dependencies: 
   - `cd MagicMirror && npm install`
-- Locate the config folder and copy the `config.js.sample` to `config.js` or use your own. 
+- Locate the config folder and copy the `config.js.sample` to `config.js` or use your own (One is located in the project root). 
   - NOTE : The config.js can hold API keys or other credentials for certain services, so make sure you don't add this to version control!
 - Start the MagicMirror in server only mode: `node serveronly`
 - Navigate to the domain or ip address configured in the Vagrantfile with port 8080 (example: dev.magicmirror.com:8080)

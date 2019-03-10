@@ -1,0 +1,176 @@
+/* Magic Mirror Config Sample 
+ *
+ * By Michael Teeuw http://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information how you can configurate this file
+ * See https://github.com/MichMich/MagicMirror#configuration
+ *
+ * Edited by Ronan Versendaal to reflect current changes made to MyMagicMirror and the MMM-Page-Selector config.
+ */
+
+var config = {
+	address: "0.0.0.0", // Address to listen on, can be:
+	                      // - "localhost", "127.0.0.1", "::1" to listen on loopback interface
+	                      // - another specific IPv4/6 to listen on a specific interface
+	                      // - "", "0.0.0.0", "::" to listen on any interface
+	                      // Default, when address config is left out, is "localhost"
+	port: 8080,
+	ipWhitelist: [
+	ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"], // Set [] to allow all IP addresses
+	                                                       // or add a specific IPv4 of 192.168.1.5 :
+	                                                       // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
+	                                                       // or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
+	                                                       // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"], // Set [] to allow all IP addresses
+	language: "nl",
+	timeFormat: 24,
+	units: "metric",
+
+	modules: [
+		{
+			module: "MMM-Logging", // Keep this one on top
+			config: {
+				// Module functions out of the box with nothing set here.
+				// See below for configurable options.
+			}
+		},
+		{
+			module: "alert",
+		},
+		{
+			module: "updatenotification",
+			pages: {
+				one: "top_bar"
+			}
+		},
+		{
+			module: "calendar",
+			header: "Get (sh)it done",
+			pages: {
+				two: "top_left"
+			},
+			config: {
+				calendars: [
+					{
+						symbol: "calendar-check",
+						url: "<YOUR_AGENDA_ICAL_URL>"
+					}
+				]
+			}
+		},
+		{
+			module: "clock",
+			pages: {
+				one: "top_left"
+			},
+			config: {
+				showWeek: true
+			}
+		},
+		{
+			module: "compliments",
+			pages: {
+				one: "bottom_bar"
+			},
+			config: {
+				classes : "thin bright",
+				compliments: {
+					
+				}
+			}
+		},
+		{
+			module: "weatherforecast",
+			pages: {
+				two: "top_right"
+			},
+			header: "Weather Forecast",
+			config: {
+				location: "Rotterdam, Nederland",
+				locationID: "2747891", //ID from https://openweathermap.org/city
+				appid: "<YOUR_OPENWEATHER_API_KEY>",
+				showRainAmount: true
+			}
+		},
+		{
+			module: "currentweather",
+			pages: {
+				one: "top_right"
+			},
+			config: {
+				location: "Rotterdam, Nederland",
+				locationID: "2747891",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
+				appid: "<YOUR_OPENWEATHER_API_KEY>",
+				showWindDirectionAsArrow: true,
+				showHumidity: true,
+				showFeelsLike: true,
+				useKMPHWind: true
+			}
+		},
+		{
+			module: "newsfeed",
+			pages: {
+				two: "bottom_bar"
+			},
+			config: {
+				feeds: [
+					{
+						title: "NU.nl - Algemeen",
+						url: "http://www.nu.nl/rss/Algemeen"
+					}
+				],
+				showSourceTitle: true,
+				showPublishDate: true,
+				ignoreOldItems: true,
+				showDescription: true
+			}
+		},
+		{
+			module: "MMM-Voice-Commands",
+			config: {
+				debug: true, //Displays end results and errors from annyang in the Log
+				autoStart: true, //Adds annyang commands when it first starts
+				activateCommand: "Yo mirror", //Command to active all other commands
+				deactivateCommand: "Mute", //Command to deactivate all other commands
+				alertHeard: false, //Whether an alert should be shown when annyang hears a phrase (mostly for debug)
+				commands: {
+					"test": function () {
+						alert("Heard");
+					},
+					"command statement :variable (optional statement)": "SOCKET_NOTIFICATION_NAME",
+					//The payload of the socket notification will be whatever is said in the :variable
+					"command statement *variable": function (param) {
+						alert("Whatever is said in the *variable space is given as the " + param);
+						//These function's 'this' are bound to the module's 'this' so you can do stuff like:
+						this.sendNotification("PAGE_SELECT", "2");
+					},
+					"go to (page) :number": "PAGE_SELECT"
+				}
+			}
+		},
+		{
+			module: "MMM-Page-Selector",
+			position: "top_center",
+			config: {
+				defaultPage: "two",
+				displayTitle: true,
+				selectPageNotif: ["SELECT_PAGE"],
+				incrementPageNotif: ["PAGE_UP"],
+				decrementPageNotif: ["PAGE_DOWN"],
+				autoChange: {
+					interval: 100
+				}
+			}
+		},
+		{
+			module: "MMM-page-indicator",
+			pages: {
+				"all": "bottom_bar"
+			}
+		}
+	]
+
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") {module.exports = config;}
