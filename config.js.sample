@@ -35,6 +35,15 @@ var config = {
 			}
 		},
 		{
+			module: 'MMM-pihole-stats',
+			pages: {
+				one: "top_right"
+			}, // Or any valid MagicMirror position.
+			config: {
+					apiUrl : '<YOUR_PI_HOLE_ADDRESS>/admin/api'
+			}
+		}
+		{
 			module: "alert",
 		},
 		{
